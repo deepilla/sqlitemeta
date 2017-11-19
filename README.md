@@ -1,6 +1,7 @@
 # sqlitemeta
 
 [![GoDoc](https://godoc.org/github.com/deepilla/sqlitemeta?status.svg)](https://godoc.org/github.com/deepilla/sqlitemeta)
+[![Build Status](https://travis-ci.org/deepilla/sqlitemeta.svg?branch=master)](https://travis-ci.org/deepilla/sqlitemeta)
 [![Go Report Card](https://goreportcard.com/badge/github.com/deepilla/sqlitemeta)](https://goreportcard.com/report/github.com/deepilla/sqlitemeta)
 
 SQLitemeta is a Go library that provides access to SQLite metadata such as table, column and index information.
