@@ -124,16 +124,16 @@ func (s *Schema) Columns(db *sql.DB, tableName string) ([]Column, error) {
 
 	q :=
 		`SELECT
-            cid,
-            name,
-            type,
-            "notnull",
-            dflt_value,
-            pk
-        FROM
-            pragma_table_info(` + placeholdersFor(params) + `)
-        ORDER BY
-            cid`
+			cid,
+			name,
+			type,
+			"notnull",
+			dflt_value,
+			pk
+		FROM
+			pragma_table_info(` + placeholdersFor(params) + `)
+		ORDER BY
+			cid`
 
 	var columns []Column
 
@@ -239,16 +239,16 @@ func (s *Schema) ForeignKeys(db *sql.DB, tableName string) ([]ForeignKey, error)
 
 	q :=
 		`SELECT
-            id,
-            "table",
-            "from",
+			id,
+			"table",
+			"from",
 			"to",
 			on_update,
 			on_delete
-        FROM
+		FROM
 			pragma_foreign_key_list(` + placeholdersFor(params) + `)
-        ORDER BY
-            id, seq`
+		ORDER BY
+			id, seq`
 
 	var rows []struct {
 		ID       int
@@ -362,17 +362,17 @@ func (s *Schema) Indexes(db *sql.DB, tableName string) ([]Index, error) {
 
 	q :=
 		`SELECT
-            t1.name,
-            t1.origin,
-            t1."unique",
-            t1.partial,
-            t2.name
-        FROM
-            pragma_index_list(?` + placeholder + `) t1
-        INNER JOIN
-            pragma_index_info(t1.name` + placeholder + `) t2
-        ORDER BY
-            t1.seq, t2.seqno`
+			t1.name,
+			t1.origin,
+			t1."unique",
+			t1.partial,
+			t2.name
+		FROM
+			pragma_index_list(?` + placeholder + `) t1
+		INNER JOIN
+			pragma_index_info(t1.name` + placeholder + `) t2
+		ORDER BY
+			t1.seq, t2.seqno`
 
 	var rows []struct {
 		Name       string
@@ -482,18 +482,18 @@ func (s *Schema) indexColumns(db *sql.DB, indexName string, includeAux bool) ([]
 
 	q :=
 		`SELECT
-            name,
-            seqno,
-            cid,
-            desc,
-            coll,
-            key
-        FROM
-            pragma_index_xinfo(` + placeholdersFor(params) + `)
+			name,
+			seqno,
+			cid,
+			desc,
+			coll,
+			key
+		FROM
+			pragma_index_xinfo(` + placeholdersFor(params) + `)
 		WHERE
 			` + whereClause + `
-        ORDER BY
-            seqno`
+		ORDER BY
+			seqno`
 
 	var columns []IndexColumn
 
