@@ -485,7 +485,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey:   make([]sql.NullString, 1),
@@ -504,7 +503,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{
@@ -526,7 +524,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{
@@ -549,7 +546,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x", "y"},
 					ParentTable: "parent",
 					ParentKey:   make([]sql.NullString, 2),
@@ -570,7 +566,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x", "y"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{
@@ -597,7 +592,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"y"},
 					ParentTable: "parent2",
 					ParentKey: []sql.NullString{
@@ -606,7 +600,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 				},
 				{
 					ID:          1,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent1",
 					ParentKey: []sql.NullString{
@@ -630,7 +623,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{
@@ -656,7 +648,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{
@@ -681,7 +672,6 @@ func testForeignKeys(t *testing.T, db *sql.DB) {
 			ForeignKeys: []meta.ForeignKey{
 				{
 					ID:          0,
-					ChildTable:  "a",
 					ChildKey:    []string{"x"},
 					ParentTable: "parent",
 					ParentKey: []sql.NullString{

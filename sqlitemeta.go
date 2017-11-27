@@ -207,7 +207,6 @@ func (v *ForeignKeyAction) Scan(src interface{}) error {
 // ForeignKey represents a foreign key constraint.
 type ForeignKey struct {
 	ID          int
-	ChildTable  string
 	ChildKey    []string
 	ParentTable string
 	ParentKey   []sql.NullString // Parent key fields are NULL if not specified in the REFERENCES clause.
@@ -273,7 +272,6 @@ func (s *Schema) ForeignKeys(db *sql.DB, tableName string) ([]ForeignKey, error)
 
 			foreignKeys = append(foreignKeys, ForeignKey{
 				ID:          r.ID,
-				ChildTable:  tableName,
 				ParentTable: r.Table,
 				OnUpdate:    r.OnUpdate,
 				OnDelete:    r.OnDelete,
