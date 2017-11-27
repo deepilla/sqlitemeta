@@ -511,14 +511,16 @@ func (s *Schema) masterTableNames(db *sql.DB, typ string) ([]string, error) {
 		if strings.ToLower(s.name) == "temp" {
 			tableName = "sqlite_temp_master"
 		} else {
-			// Unlike other queries where we're able to use parameters,
-			// we insert the user-provided Schema name directly into
-			// the SQL here. To protect against SQL injection attacks,
-			// we first verify that a database with the given name
-			// exists.
-			err := s.verify(db)
+			// Unlike the other queries which use parameters, we insert
+			// the user-provided Schema name directly into the SQL here.
+			// So to protect against SQL injection, we first verify that
+			// a database with the given name exists.
+			ok, err := s.exists(db)
 			if err != nil {
 				return nil, fmt.Errorf("could not get %s names: %s", typ, err)
+			}
+			if !ok {
+				return nil, fmt.Errorf("could not get %s names: unknown database '%s'", typ, s.name)
 			}
 			tableName = s.name + "." + tableName
 		}
@@ -534,23 +536,17 @@ func (s *Schema) masterTableNames(db *sql.DB, typ string) ([]string, error) {
 	return names, nil
 }
 
-func (s *Schema) verify(db *sql.DB) error {
+func (s *Schema) exists(db *sql.DB) (bool, error) {
 
 	var count int
 	q := "SELECT COUNT(*) FROM pragma_database_list WHERE LOWER(name) = ?"
 
 	err := db.QueryRow(q, sqlower(s.name)).Scan(&count)
 	if err != nil {
-		return err
+		return false, err
 	}
 
-	if count < 1 {
-		// Schema doesn't exist. Mimic the error message that
-		// SQLite returns in this situation.
-		return fmt.Errorf("unknown database '%s'", s.name)
-	}
-
-	return nil
+	return count > 0, nil
 }
 
 // sqlower replicates SQLite's LOWER function which converts
