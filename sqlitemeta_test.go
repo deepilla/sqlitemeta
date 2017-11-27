@@ -752,7 +752,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name: "idx1",
-					Type: meta.IndexTypeNormal,
+					Type: meta.IndexTypeUser,
 					ColumnNames: []sql.NullString{
 						nullString("x"),
 					},
@@ -772,7 +772,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:     "idx1",
-					Type:     meta.IndexTypeNormal,
+					Type:     meta.IndexTypeUser,
 					IsUnique: true,
 					ColumnNames: []sql.NullString{
 						nullString("x"),
@@ -793,7 +793,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:      "idx1",
-					Type:      meta.IndexTypeNormal,
+					Type:      meta.IndexTypeUser,
 					IsPartial: true,
 					ColumnNames: []sql.NullString{
 						nullString("x"),
@@ -814,7 +814,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:      "idx1",
-					Type:      meta.IndexTypeNormal,
+					Type:      meta.IndexTypeUser,
 					IsUnique:  true,
 					IsPartial: true,
 					ColumnNames: []sql.NullString{
@@ -899,7 +899,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:     "idx1",
-					Type:     meta.IndexTypeNormal,
+					Type:     meta.IndexTypeUser,
 					IsUnique: true,
 					ColumnNames: []sql.NullString{
 						nullString("x"),
@@ -926,7 +926,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:      "idx1",
-					Type:      meta.IndexTypeNormal,
+					Type:      meta.IndexTypeUser,
 					IsPartial: true,
 					ColumnNames: []sql.NullString{
 						nullString("z"),
@@ -964,7 +964,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:        "idx1",
-					Type:        meta.IndexTypeNormal,
+					Type:        meta.IndexTypeUser,
 					ColumnNames: make([]sql.NullString, 1),
 				},
 			},
@@ -985,7 +985,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name: "idx1",
-					Type: meta.IndexTypeNormal,
+					Type: meta.IndexTypeUser,
 					ColumnNames: []sql.NullString{
 						nullString("w"),
 						{},
@@ -1010,7 +1010,7 @@ func testIndexes(t *testing.T, db *sql.DB) {
 			Indexes: []meta.Index{
 				{
 					Name:        "idx1",
-					Type:        meta.IndexTypeNormal,
+					Type:        meta.IndexTypeUser,
 					ColumnNames: make([]sql.NullString, 2),
 				},
 			},
@@ -1559,7 +1559,7 @@ func TestScanIndexType(t *testing.T) {
 				"c",
 				[]byte("C"),
 			},
-			Type: meta.IndexTypeNormal,
+			Type: meta.IndexTypeUser,
 		},
 		{
 			Title: "Unique",

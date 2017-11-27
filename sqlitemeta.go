@@ -291,9 +291,9 @@ func (s *Schema) ForeignKeys(db *sql.DB, tableName string) ([]ForeignKey, error)
 type IndexType uint
 
 const (
-	// IndexTypeNormal denotes an index created by the user
-	// with a CREATE INDEX statement.
-	IndexTypeNormal IndexType = iota
+	// IndexTypeUser denotes an index created by the user with
+	// a CREATE INDEX statement.
+	IndexTypeUser IndexType = iota
 
 	// IndexTypeUnique denotes an index created by SQLite to
 	// enforce a UNIQUE column constraint.
@@ -314,7 +314,7 @@ func (t *IndexType) Scan(src interface{}) error {
 
 	switch strings.ToLower(s) {
 	case "c":
-		*t = IndexTypeNormal
+		*t = IndexTypeUser
 	case "u":
 		*t = IndexTypeUnique
 	case "pk":
